@@ -1,0 +1,113 @@
+> install.packages("HybridFS")
+
+#Installing package into ‘C:/Users/sharisankar/Documents/R/win-library/3.5’
+#(as ‘lib’ is unspecified)
+#also installing the dependencies ‘RWekajars’, ‘RWeka’, ‘entropy’, ‘FSelector’, ‘woeBinning’, ‘InformationValue’
+#
+#trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/RWekajars_3.9.3-1.zip'
+#Content type 'application/zip' length 10032653 bytes (9.6 MB)
+#downloaded 9.6 MB
+#
+#trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/RWeka_0.4-39.zip'
+#Content type 'application/zip' length 632632 bytes (617 KB)
+#downloaded 617 KB
+#
+#trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/entropy_1.2.1.zip'
+#Content type 'application/zip' length 79351 bytes (77 KB)
+#downloaded 77 KB
+#
+#trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/FSelector_0.31.zip'
+#Content type 'application/zip' length 94064 bytes (91 KB)
+#downloaded 91 KB
+#
+#trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/woeBinning_0.1.6.zip'
+#Content type 'application/zip' length 120733 bytes (117 KB)
+#downloaded 117 KB
+#
+#trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/InformationValue_1.2.3.zip'
+#Content type 'application/zip' length 211808 bytes (206 KB)
+#downloaded 206 KB
+#
+#trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/HybridFS_0.1.2.zip'
+#Content type 'application/zip' length 72575 bytes (70 KB)
+#downloaded 70 KB
+
+package ‘RWekajars’ successfully unpacked and MD5 sums checked
+package ‘RWeka’ successfully unpacked and MD5 sums checked
+package ‘entropy’ successfully unpacked and MD5 sums checked
+package ‘FSelector’ successfully unpacked and MD5 sums checked
+package ‘woeBinning’ successfully unpacked and MD5 sums checked
+package ‘InformationValue’ successfully unpacked and MD5 sums checked
+package ‘HybridFS’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\sharisankar\AppData\Local\Temp\2\Rtmp6p9BOS\downloaded_packages
+
+> library(HybridFS)
+
+#Warning message:
+#package ‘HybridFS’ was built under R version 3.5.2 
+
+> FS=HybridFS(input.df=tr, target.var.name=tr$Survived)
+
+#Error in names(data) <- `*vtmp*` : 
+#  'names' attribute [891] must be the same length as the vector [12]
+#In addition: Warning message:
+#In names(data) == target.var.name :
+#  longer object length is not a multiple of shorter object length
+
+> FS=HybridFS(input.df=tr, target.var.name='Survived')
+
+#Error: .onLoad failed in loadNamespace() for 'rJava', details:
+#  call: fun(libname, pkgname)
+#  error: JAVA_HOME cannot be determined from the Registry
+
+> FS=HybridFS(input.df=tr, target.var.name='Survived')
+
+#Error: .onLoad failed in loadNamespace() for 'rJava', details:
+#  call: dirname(this$RuntimeLib)
+#  error: a character vector argument expected
+
+> FS=HybridFS(input.df=tr, target.var.name=tr$Survived)
+
+#Error in names(data) <- `*vtmp*` : 
+#  'names' attribute [891] must be the same length as the vector [12]
+
+
+################################### Install Java Package ###################################
+
+> install.packages("rJava")
+
+#Installing package into ‘C:/Users/sharisankar/Documents/R/win-library/3.5’
+#(as ‘lib’ is unspecified)
+#trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.5/rJava_0.9-10.zip'
+#Content type 'application/zip' length 825992 bytes (806 KB)
+#downloaded 806 KB
+
+#package ‘rJava’ successfully unpacked and MD5 sums checked
+
+#The downloaded binary packages are in
+#	C:\Users\sharisankar\AppData\Local\Temp\2\Rtmp6p9BOS\downloaded_packages
+
+> library(rJava)
+
+#Error: package or namespace load failed for ‘rJava’ in get(Info[i, 1], envir = env):
+# lazy-load database 'C:/Users/sharisankar/Documents/R/win-library/3.5/rJava/R/rJava.rdb' is corrupt
+
+
+################################# For Solving the error #################################
+
+#1. Install Java Package
+#2. Set Java Directory using 'options' command
+#3. Load Java package
+
+> install.packages("rJava")
+
+> options(java.home="C:\\Program Files\\Java\\jdk1.8.0_191\\")
+
+> library(rJava)
+
+#Warning message:
+#package ‘rJava’ was built under R version 3.5.2 
+
+> FS=HybridFS(input.df=tr, target.var.name='Survived')
